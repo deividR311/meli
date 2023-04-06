@@ -1,0 +1,24 @@
+.header-col-img {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form {
+    // width: 100%;
+}
+
+.header-ctn {
+    width: 100%;
+}
+
+.header-navbar {
+    background-color: $primary !important;
+}
+
+.header-router-ctn {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}

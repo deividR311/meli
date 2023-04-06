@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  color: #4b4b4b;
+  font-family: "Roboto", sans-serif;
+  background-color: #EEEEEE;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+@mixin TextAlignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
