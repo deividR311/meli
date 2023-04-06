@@ -4,8 +4,8 @@ import Router from "./router/Router";
 function App() {
   return (
     <>
-      <Router />
-      {/* <h1>App</h1> */}
+      {/* <Router /> */}
+      <h1>App</h1>
     </>
   );
 }
