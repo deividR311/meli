@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
     Row,
     Button,
@@ -7,15 +8,33 @@ import {
     Col
 } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Search } from 'react-bootstrap-icons';
 
 // OWN IMPORTS
 import meliLogo from '../../assets/meli-logo.png';
 import { ProductDetailPage, ProductPage } from '../Pages';
 import { NavBreadCrumb } from '../../shared/Shared';
+import ProductContext from '../../contexts/Products/ProductsContext';
+import { useForm } from '../../hooks/UseForm';
 
+interface FormData {
+    query : string
+}
 
 const Header = () => {
+    const history = useNavigate();
+
+    //HOOKS
+    const { productState, getProductsByQuery } = useContext(ProductContext);
+    const { form, handleChange } = useForm<FormData>({ query : '' })
+
+    const { query } = form;
+
+    const getProduct = () => {
+        (query !== '') && getProductsByQuery(query);
+        history('items');
+    }
     
     return (
         <>
@@ -27,11 +46,15 @@ const Header = () => {
                             <Col sm={11}>
                                 <Form className="d-flex header-form">
                                     <Form.Control
+                                        className='header-form-control'
                                         type="search"
                                         placeholder="Nunca dejes de Buscar"
                                         aria-label="Search"
+                                        name='query'
+                                        value={query}
+                                        onChange={handleChange}
                                     />
-                                    <Button variant="light"><Search /></Button>
+                                    <Button variant="light" className='header-form-btn' onClick={getProduct}><Search /></Button>
                                 </Form>
                             </Col>
                         </Row>
@@ -40,13 +63,17 @@ const Header = () => {
             </Navbar>
 
             <Container>
-                <NavBreadCrumb />
-                <div className='header-router-ctn'>
-                    <Routes>
-                        <Route path={'items'} element={ <ProductPage /> } />
-                        <Route path={'items/:id'} element={ <ProductDetailPage /> } />
-                    </Routes>
-                </div>
+                { productState.products.length > 0 &&
+                    <>
+                        <NavBreadCrumb />
+                        <div className='header-router-ctn'>
+                            <Routes>
+                                <Route path={'items'} element={ <ProductPage /> } />
+                                <Route path={'items/:id'} element={ <ProductDetailPage /> } />
+                            </Routes>
+                        </div>
+                    </>
+                }
             </Container>
         </>
     )
