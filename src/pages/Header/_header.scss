@@ -19,6 +19,18 @@
 
 .header-router-ctn {
     background: white;
-    border-radius: 10px;
     padding: 10px;
+    margin-top: 10px;
+}
+
+.header-form-control {
+    border-radius: 0px !important;
+    border: 1px solid white !important;
+}
+
+.header-form-btn {
+    border-radius: 0px !important;
+    color: #707070 !important;
+    background: #dfdfdf;
+    border: 1px solid #dfdfdf;
 }

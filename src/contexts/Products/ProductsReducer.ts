@@ -13,7 +13,7 @@ export default (state : ProductStateType, { type, payload } : action ) : Product
     case Types.PRODUCTS_BY_QUERY:
       return {
         ...state,
-        product: payload
+        products: payload
       };
 
     default:

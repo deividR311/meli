@@ -3,7 +3,8 @@ import { Product } from '../../models/ProductModel';
 import { ProductStateType } from '../../interfaces/ProductStateInterface';
 
 export type ProductContextProps = {
-    productState : ProductStateType
+    productState : ProductStateType,
+    getProductsByQuery : ( query : string ) => void
 }
 
 const ProductContext = createContext<ProductContextProps>({} as ProductContextProps);

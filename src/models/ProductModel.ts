@@ -9,7 +9,7 @@ export type Product = {
     listingTypeID:        string;
     permalink:            string;
     buyingMode:           string;
-    siteID:               string;
+    site_id:              string;
     categoryID:           string;
     domainID:             string;
     thumbnail:            string;
