@@ -16,6 +16,12 @@ export default (state : ProductStateType, { type, payload } : action ) : Product
         products: payload
       };
 
+    case Types.PRODUCT_BY_ID:
+      return {
+        ...state,
+        product: payload[0]
+      };
+
     default:
       return state;
   }
