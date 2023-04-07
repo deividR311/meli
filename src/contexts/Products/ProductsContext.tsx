@@ -1,11 +1,13 @@
 import { createContext } from 'react';
-import { Product } from '../../models/ProductModel';
+
+//OWN IMPORTS
 import { ProductStateType } from '../../interfaces/ProductStateInterface';
 
 export type ProductContextProps = {
     productState : ProductStateType,
     getProductsByQuery : ( query : string ) => void,
-    getProductById : ( id : string ) => void
+    getProductById : ( id : string ) => void,
+    emptyProducts : () => void
 }
 
 const ProductContext = createContext<ProductContextProps>({} as ProductContextProps);
