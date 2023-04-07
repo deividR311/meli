@@ -1,8 +1,10 @@
-import React from 'react'
 import { useContext } from 'react';
-import ProductContext from '../../contexts/Products/ProductsContext';
 import { Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
+//OWN IMPORTS
+import ProductContext from '../../contexts/Products/ProductsContext';
+
 
 const Product = () => {
   const history = useNavigate();
@@ -39,4 +41,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default Product;

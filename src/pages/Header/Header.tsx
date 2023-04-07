@@ -17,22 +17,19 @@ import { ProductDetailPage, ProductPage } from '../Pages';
 import { NavBreadCrumb } from '../../shared/Shared';
 import ProductContext from '../../contexts/Products/ProductsContext';
 import { useForm } from '../../hooks/UseForm';
-
-interface FormData {
-    query : string
-}
+import { HeaderFormData } from '../../interfaces/HeaderFormData';
 
 const Header = () => {
     const history = useNavigate();
 
     //HOOKS
-    const { productState, getProductsByQuery } = useContext(ProductContext);
-    const { form, handleChange } = useForm<FormData>({ query : '' })
+    const { productState, getProductsByQuery, emptyProducts } = useContext(ProductContext);
+    const { form, handleChange } = useForm<HeaderFormData>({ query : '' })
 
     const { query } = form;
 
     const getProduct = () => {
-        (query !== '') && getProductsByQuery(query);
+        (query !== '') && (productState.products.length > 0) && emptyProducts(); getProductsByQuery(query);
         history('items');
     }
     
@@ -79,4 +76,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;

@@ -7,10 +7,16 @@ type action = {
   payload : Product[]
 }
 
-export default (state : ProductStateType, { type, payload } : action ) : ProductStateType => {
+const productsReducer = (state : ProductStateType, { type, payload } : action ) : ProductStateType => {
   switch (type) {
     
     case Types.PRODUCTS_BY_QUERY:
+      return {
+        ...state,
+        products: payload
+      };
+
+    case Types.EMPTY_PRODUCTS:
       return {
         ...state,
         products: payload
@@ -26,3 +32,5 @@ export default (state : ProductStateType, { type, payload } : action ) : Product
       return state;
   }
 };
+
+export default productsReducer;

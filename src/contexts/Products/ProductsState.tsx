@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import ProductContext from './ProductsContext';
 import { Product } from '../../models/ProductModel';
 import productsReducer from './ProductsReducer';
@@ -29,6 +29,10 @@ const ProductsState = ({ children } : props) => {
     )
   };
 
+  const emptyProducts = () => {
+    dispatch({ type: Types.EMPTY_PRODUCTS, payload: [] });
+  }
+
   const getProductById = ( id : string ) => {
     ProductsService.getProductById( id ).then(
       (response) => {
@@ -44,7 +48,8 @@ const ProductsState = ({ children } : props) => {
     <ProductContext.Provider value={{
       productState,
       getProductsByQuery,
-      getProductById
+      getProductById,
+      emptyProducts
     }}>
       {children}
     </ProductContext.Provider>

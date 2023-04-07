@@ -4,10 +4,10 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
-import { routes } from './Routes';
-import ProductsState from '../contexts/Products/ProductsState';
 
 //OWN IMPORTS
+import { routes } from './Routes';
+import ProductsState from '../contexts/Products/ProductsState';
 
 const Router = () => {
   return (
