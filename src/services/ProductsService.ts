@@ -1,3 +1,4 @@
+import { Product } from "../models/ProductModel";
 import { ProductsResponse } from "../models/ProductResponseModel";
 import { MELI_API } from "./BaseService";
 
@@ -8,9 +9,9 @@ class ProductService {
   };
 
   getProductById = async ( id : string ) => {
-    let response = await MELI_API.get<ProductsResponse>(`/items/${id}`);
+    let response = await MELI_API.get<Product>(`/items/${id}`);
     console.log(response);
-    return response.data.results
+    return response.data;
   };
 }
 

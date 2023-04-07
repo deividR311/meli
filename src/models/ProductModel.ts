@@ -40,6 +40,8 @@ export type Product = {
     variationsData?:      VariationsData;
     officialStoreName?:   string;
     differentialPricing?: DifferentialPricing;
+    warranty?:            string;
+    descriptions?:        string[]
 }
 
 type Shipping = {

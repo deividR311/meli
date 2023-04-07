@@ -11,7 +11,8 @@ interface props {
 }
 
 const INITIAL_STATE: ProductStateType = {
-  products: []
+  products: [],
+  product : {} as Product
 }
 
 const ProductsState = ({ children } : props) => {
@@ -27,10 +28,23 @@ const ProductsState = ({ children } : props) => {
       }
     )
   };
+
+  const getProductById = ( id : string ) => {
+    ProductsService.getProductById( id ).then(
+      (response) => {
+        dispatch({
+          type: Types.PRODUCT_BY_ID,
+          payload: [response]
+        });
+      }
+    )
+  };
+
   return (
     <ProductContext.Provider value={{
       productState,
-      getProductsByQuery
+      getProductsByQuery,
+      getProductById
     }}>
       {children}
     </ProductContext.Provider>
